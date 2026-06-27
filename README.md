@@ -1,14 +1,14 @@
-# 🔊 Smart Clap-Controlled Led Light
+#  Smart Clap-Controlled Led Light
 
 
-## 📌 Abstract
+## Abstract
 A sound-activated LED toggle system that turns a light ON/OFF 
 with each clap, built using only analog and digital ICs — 
 no microcontroller needed. Operates on a single 9V battery.
 
 ---
 
-## ⚙️ Components Used
+## Components Used
 | Component | Function |
 |-----------|----------|
 | LM358N Op-Amp | Amplifier + Comparator |
@@ -17,9 +17,9 @@ no microcontroller needed. Operates on a single 9V battery.
 | Electret Mic | Sound detection |
 
 
-## 🔧 Working Principle
+##  Working Principle
 
-### 1. 🎙️ Microphone Signal Generation
+### 1.  Microphone Signal Generation
 When a clap occurs, the electret condenser microphone detects 
 the sound wave and converts it into a small alternating voltage 
 of typically **1–10 mV**. This weak signal is passed through a 
@@ -28,7 +28,7 @@ the AC audio signal to reach the amplifier.
 
 ---
 
-### 2. 📈 Non-Inverting Amplifier (LM358N - Section A)
+### 2.  Non-Inverting Amplifier (LM358N - Section A)
 The first half of the LM358N dual op-amp is configured as a 
 **non-inverting amplifier**. The microphone signal is applied 
 to the **non-inverting input (+IN, Pin 3)**.
@@ -49,7 +49,7 @@ comparator stage.
 
 ---
 
-### 3. ⚖️ Inverting Comparator (LM358N - Section B)
+### 3.  Inverting Comparator (LM358N - Section B)
 The second half of the LM358N is configured as an 
 **open-loop inverting comparator** (no feedback resistor).
 
@@ -75,7 +75,7 @@ This produces a **negative-going (LOW) pulse** on each clap.
 
 ---
 
-### 4. ⏱️ NE555 Timer in Monostable Mode
+### 4.  NE555 Timer in Monostable Mode
 The NE555P is wired in **monostable (one-shot) mode**. 
 
 - When the comparator's LOW pulse reaches **Pin 2 (TRIG)** 
@@ -93,11 +93,11 @@ The NE555P is wired in **monostable (one-shot) mode**.
 - Without the 555, the flip-flop would toggle multiple times 
   per clap and return to its original state
 - The 0.52s clean pulse ensures **exactly one rising edge** 
-  reaches the flip-flop per clap ✅
+  reaches the flip-flop per clap 
 
 ---
 
-### 5. 🔁 CD4013 D Flip-Flop Toggle Operation
+### 5.  CD4013 D Flip-Flop Toggle Operation
 The CD4013 D flip-flop is wired in **toggle mode** by 
 connecting the **Q̄ (Q-bar) output back to the D input**.
 
@@ -120,7 +120,7 @@ connecting the **Q̄ (Q-bar) output back to the D input**.
 The Q output drives the LED through a **1kΩ current-limiting 
 resistor**, giving a safe forward current of:
 
-**I = (9V − 2V) / 1kΩ ≈ 7mA** ✅
+**I = (9V − 2V) / 1kΩ ≈ 7mA** 
 
 
 
